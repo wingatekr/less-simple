@@ -1,0 +1,38 @@
+@import 'mixins/for';
+@import 'mixins/grid';
+@import 'mixins/grid-framework';
+// Button gradient
+.btn-gradient (@g1; @g2; @g3; @g4; @g5) {
+    background-color: @g3;
+    background: linear-gradient(to bottom, @g1 0%, @g2 1%, @g3 4%, @g4 94%, @g5 100%);
+    background-repeat: no-repeat;
+}
+.font-size-rems(@px-size) {
+    // @px-size should be the desired font size in pixels which will then be converted to REMs
+    @rem-size: @px-size / @rem-base-size;
+    font-size: ~"@{px-size}px";
+    font-size: ~"@{rem-size}rem";
+}
+
+.border-radius (@radius-top-left:3px; @radius-top-right: 3px; @radius-bottom-right: 3px; @radius-bottom-left: 3px) {
+    border-radius: @radius-top-left @radius-top-right @radius-bottom-right @radius-bottom-left;
+}
+.clearfix() {
+    &:after,
+    &:before {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+}
+
+.sr() {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}

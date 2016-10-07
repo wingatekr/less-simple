@@ -1,0 +1,469 @@
+
+input {
+  border: @input-border;
+  padding: @padding-vertical @padding-horizontal;
+  width: 100%;
+  max-width: 100%;
+  min-height: (@padding-vertical * 2) + 21 + 2; //fix issue with IE edge where baseline space is cutoff. 21 = font-size * line-height, 2 = border
+  background: @input-bg;
+  color: @input-color;
+  .font-size-rems(@input-font-size);
+  line-height: @line-height-base;
+  border-radius: @input-border-radius;
+}
+
+
+.placeholder() {
+  color: @input-color-placeholder
+}
+
+//pseudo classes need to in separate definitions to work, or the whole rule is invalid
+::-webkit-input-placeholder {
+  .placeholder();
+}
+
+:-moz-placeholder {
+  .placeholder();
+}
+
+::-moz-placeholder {
+  .placeholder();
+}
+
+:-ms-input-placeholder {
+  .placeholder();
+}
+
+:placeholder-shown{
+    .placeholder();
+}
+
+input[type=text]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+input[type=text]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  opacity: 0;
+  width: 0;
+  float: left;
+
+  & + label {
+    clear: none;
+    margin: 0;
+    display: block;
+    font-size: 1em;
+    font-weight: normal;
+    cursor: pointer;
+    line-height: 1.4em;
+    padding: (2 * @base-font-one-pixel-em) 0 (2 * @base-font-one-pixel-em) 30px;
+    margin: 0 0 .75em 0;
+    position: relative;
+  }
+}
+
+input[type='checkbox'] + label::before,
+input[type='radio'] + label::before {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -12px;
+  border: solid 2px @checkbox-radio-border;
+  background-color: @checkbox-radio-bg;
+  width: 24px;
+  height: 24px;
+}
+
+input[type='checkbox']:focus + label::before,
+input[type='radio']:focus + label::before {
+  border: 2px solid @checkbox-radio-border-focus;
+  box-shadow: @input-focus-shadow
+}
+
+input[type='radio'] + label::before {
+  border-radius: 50%;
+}
+
+input[type='radio']:checked + label::after {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  margin-top: -8px;
+  border-radius: 50%;
+  background-color: @blue-dark;
+  width: 16px;
+  height: 16px;
+}
+
+input[type='checkbox'] + label::before {
+  border-radius: 3px;
+}
+
+input[type='checkbox']:checked + label::before {
+  content: '';
+  font-family: 'trv-icons';
+  font-size: 19px;
+  color: #666666;
+  line-height: 20px;
+  text-align: center;
+  &:extend(.icon-check:before all);
+}
+
+.inline-checkboxes,
+.inline-radios {
+  input[type='radio'] + label,
+  input[type='checkbox'] + label,
+  .checkbox-block,
+  .radio-block {
+    display: inline-block;
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .checkbox-block,
+  .radio-block {
+    vertical-align: top;
+  }
+}
+
+select {
+  padding-top: @padding-vertical;
+  padding-bottom: @padding-vertical * 2;
+  padding-right: 30px;
+  padding-left: 5px;
+  background-color: @input-bg;
+  background-image: url(../images/arrow-down.png);
+  background-position: 95% 50%;
+  border: @input-border;
+  border-radius: @input-border-radius;
+  background-repeat: no-repeat;
+  width: 100%;
+  appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  .font-size-rems(@input-font-size);
+  line-height: @line-height-base;
+  &[disabled] {
+    background-color: @input-bg-disabled;
+  }
+}
+
+.no-flexbox select {
+  background-image: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+//apparently the android stock browser basically loses its mind if you try to set ANY of these properties to anything other than default.
+.android-stock select {
+  background-image: none;
+  border-color: initial;
+  background-repeat: repeat;
+  background-position: initial;
+  appearance: menulist;
+  -webkit-appearance: menulist;
+}
+
+textarea {
+  border: @input-border;
+  border-radius: @input-border-radius;
+  width: 100%;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-bottom: 5 * @one-pixel-rem;
+}
+
+legend {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: .5em;
+}
+
+.input-group {
+  margin-bottom: @input-vertical-margin;
+}
+
+.checkbox-radio-fieldset {
+  margin-bottom: @input-vertical-margin - @checkbox-radio-margin;
+
+  > .input-group:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+fieldset {
+  border-width: 0;
+  padding: 0;
+}
+
+//if using grid to create horizontal forms, adjust label so it aligns horizontally with control
+label {
+  &[class^="col-sm-"],
+  &[class^="col-sm-"] {
+    @media (min-width: @sm) {
+      padding-top: .5em;
+    }
+  }
+  &[class^="col-md-"],
+  &[class*=" col-md-"] {
+    @media (min-width: @md) {
+      padding-top: .5em;
+    }
+  }
+}
+
+////////////////////////////////////////////////
+// focus, disabled
+input,
+select,
+textarea {
+  &:focus {
+    outline: 0;
+    border-color: @input-border-focus;
+    box-shadow: @input-focus-shadow;
+  }
+
+  &[disabled] {
+    background-color: @input-bg-disabled;
+  }
+}
+
+////////////////////////////////////////////////
+// errors
+input,
+select,
+textarea,
+input[type='checkbox'] + label::before,
+input[type='radio'] + label::before {
+.error & {
+    border: @error-border;
+    box-shadow: @error-shadow;
+  }
+}
+
+.field-error-message {
+  color: @error-color;
+}
+
+//mixin used below to create inline buttons
+.button-container-inline() {
+  text-align: left;
+
+  .btn,
+  [class^="btn-"],
+  [class*=" btn-"] {
+    display: inline-block;
+    width: auto;
+  }
+
+  button {
+    &:not(:first-child) {
+      margin-left: .5em;
+    }
+
+    &:not(.btn--link) {
+      min-width: 12em;
+    }
+  }
+}
+
+.form-horizontal {
+  @media (min-width: @form-horizontal-breakpoint) {
+    .input-group,
+    .checkbox-radio-fieldset {
+      &:extend(.clearfix all);
+    }
+
+    .checkbox-radio-fieldset legend,
+    .input-group > label {
+      display: inline-block;
+      float: left;
+      width: @form-horizontal-label-width;
+      padding-right: 1em;
+    }
+
+    .input-group > label {
+      padding-top: .5em;
+    }
+
+    //place everything that aligns to the right of the label inside an element with this class
+    .input-control-block,
+    .button-container {
+      display: block;
+      margin-left: @form-horizontal-label-width;
+    }
+
+    .button-container  {
+      .button-container-inline();
+    }
+  }
+}
+
+//when using grid to create a horizontal form
+@media (min-width: @sm) {
+  [class^='col-sm-'],
+  [class*='col-sm-'] {
+    .button-container,
+    &.button-container {
+      .button-container-inline();
+    }
+  }
+}
+
+@media (min-width: @md) {
+  [class^='col-md-'],
+  [class*='col-md-'] {
+    .button-container,
+    &.button-container {
+      .button-container-inline();
+    }
+  }
+}
+
+@media (min-width: @lg) {
+  [class^='col-lg-'],
+  [class*='col-lg-'] {
+    .button-container,
+    &.button-container {
+      .button-container-inline();
+    }
+  }
+}
+
+
+//until we better understand our fieldset approach
+//fieldset.error {
+//  padding-top: 0;
+//  border: 1px solid @red-brand;
+//  font-weight: bold;
+//  .section-bar {
+//    margin-top: 0;
+//  }
+//  .error-caption {
+//    margin-left: 0;
+//  }
+//  input[type=radio], input[type=checkbox] {
+//    -webkit-box-shadow: 0 0 0 0 transparent;
+//    -moz-box-shadow: 0 0 0 0 transparent;
+//    box-shadow: 0 0 0 0 transparent;
+//  }
+//  input[type=text] {
+//    box-shadow: none;
+//    border: @input-border;
+//
+//  }
+//}
+
+
+.radio-block input[type=radio] + label,
+.checkbox-block input[type=checkbox] + label {
+  display: inline-block;
+  margin: 0 0 0 -30px;
+}
+
+.radio-block,
+.checkbox-block {
+  padding-left: 30px;
+  margin-bottom: .75em;
+}
+
+.input-group-inline {
+  display:inline-block;
+  vertical-align: top;
+  margin-right: .5em;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  input,
+  select,
+  textarea,
+  button,
+  [class^="btn-"],
+  [class*=" btn-"] {
+    width: auto;
+  }
+
+  .form-horizontal & {
+      @media (min-width: @form-horizontal-breakpoint) {
+      &:not(:first-child) {
+        label {
+          width: auto;
+        }
+      }
+    }
+  }
+}
+
+.form-labels-normal-weight {
+  label,
+  .checkbox-radio-fieldset legend {
+    font-weight: normal;
+  }
+}
+
+.form-labels-right-aligned {
+  @media (min-width: @form-horizontal-breakpoint) {
+    .form-horizontal,
+    &.form-horizontal {
+      .checkbox-radio-fieldset legend,
+      .input-group > label {
+        text-align: right;
+      }
+    }
+  }
+
+  .input-group > label,
+  .checkbox-radio-fieldset legend {
+    &[class^="col-sm-"],
+    &[class*=" col-sm-"] {
+      @media (min-width: @sm) {
+        text-align: right;
+      }
+    }
+    &[class^="col-md-"],
+    &[class*=" col-md-"] {
+      @media (min-width: @md) {
+        text-align: right;
+      }
+    }
+  }
+}
+
+//TODO: May need a strategy for fieldset in general. Currently only concerned with checkboxes and radios in a fieldset.
+//TODO: input prefixes. e.g. $ in front of a dollar field
+//TODO: input triggers, add-ons, suffixes. e.g. calendar icon in a date field with date picker, search icon for search.
+//TODO: Consider removing .checkboxes-radios-fieldset and sing .input-group instead

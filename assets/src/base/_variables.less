@@ -1,0 +1,58 @@
+
+@gray-1: #f7f7f7;
+@gray-2: #dddddd;
+@gray-3: #d4d4d2; //warm-gray (keep this?)
+@gray-4: #ccced2; //cool-gray (keep this?)
+@gray-5: #bbbbbb;
+@gray-6: #727981;
+@gray-7: #46494d;
+@gray-8: #313235;
+
+
+
+
+@hyperlink-blue: #0072BC;
+
+
+
+//== Typography
+//
+
+@font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@rem-base-size: 16;
+
+//use unit-less line-height value so child elements inherit the raw number rather than the calculated value.
+// see https://css-tricks.com/almanac/properties/l/line-height/
+@line-height-base: 1.5;
+
+@text-color: @gray-8;
+@text-muted: @gray-6; //lighter color for less emphasis, disabled controls
+
+
+@top-z-index: 150;
+@mobile-nav-z-index: @top-z-index;
+@overlay-z-index: @top-z-index - 15;
+@nav-z-index: @top-z-index - 20;
+@datatable-header-z-index: @top-z-index - 20;
+@header-z-index: @top-z-index - 30;
+@wrapper-z-index: @top-z-index - 30;
+
+@content-max-width: 960px;
+
+@padding-vertical: 5px;
+@padding-horizontal: 10px;
+@border-radius-base: 3px;
+
+@footer-height-mobile: 150px;
+@footer-height-desktop: 75px;
+
+//== Breakpoints
+
+@sm: 480px;
+@md: 768px;
+@lg: 960px;
+@xl: 1200px;
+
+@grid-columns: 12;
+@grid-gutter-width: 20px;

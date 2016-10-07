@@ -1,0 +1,225 @@
+//animation variables
+@animate-fast: .2s;
+@animate-moderate: .4s;
+@animate-slow: .6s;
+
+//////////////////////////////////////////////////////////
+// IMPORTANT! For .slideIn, .slideInFadeIn, .slideOut, and .fadeOutSlideOut to work,
+// max-height must be set on the element
+.slideIn {
+  overflow: hidden;
+  -webkit-animation: slideIn @animate-moderate ease-out;
+  animation: slideIn @animate-moderate ease-out;
+  animation-fill-mode: forwards;
+}
+
+@slide-n-fade-speed: @animate-moderate;
+.slideInFadeIn {
+  overflow: hidden;
+  opacity: 0;
+  -webkit-animation:
+    slideIn @slide-n-fade-speed ease,
+    fadeIn @animate-fast @slide-n-fade-speed ease;
+  animation:
+    slideIn @slide-n-fade-speed ease,
+    fadeIn @animate-fast @slide-n-fade-speed ease;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes slideIn {
+  from {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.slideOut {
+  overflow: hidden;
+  -webkit-animation: slideOut @animate-moderate ease;
+  animation: slideOut @animate-moderate ease;
+  animation-fill-mode: forwards;
+}
+
+.fadeOutSlideOut {
+  overflow: hidden;
+//  opacity: 1;
+  -webkit-animation:
+    fadeOut @animate-fast ease,
+    slideOut @slide-n-fade-speed @animate-fast ease;
+  animation:
+    fadeOut @animate-fast ease,
+    slideOut @slide-n-fade-speed @animate-fast ease;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes slideOut {
+  to {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+@keyframes slideOut {
+  to {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+
+.fadeIn {
+  -webkit-animation: fadeIn @animate-moderate ease;
+  animation: fadeIn @animate-moderate ease;
+  animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.fadeOut {
+  -webkit-animation: fadeOut @animate-moderate ease;
+  animation: fadeOut @animate-moderate ease;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+
+.enterFromTop {
+    -webkit-animation: enterFromTop @animate-moderate ease-out, fadeIn @animate-moderate ease-in-out;
+    animation: enterFromTop @animate-moderate ease-out, fadeIn @animate-moderate ease-in-out;
+}
+
+@-webkit-keyframes enterFromTop {
+  from {
+    -webkit-transform: translateY(-50%);
+  }
+}
+
+@keyframes enterFromTop {
+  from {
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+
+
+
+.enterFromBottom {
+  -webkit-animation: enterFromBottom @animate-moderate ease-out, fadeIn @animate-moderate ease-in-out;
+  animation: enterFromBottom @animate-moderate ease-out, fadeIn @animate-moderate ease-in-out;
+}
+
+@-webkit-keyframes enterFromBottom {
+  from {
+    -webkit-transform: translateY(50%);
+  }
+}
+
+@keyframes enterFromBottom {
+  from {
+    -webkit-transform: translateY(50%);
+    transform: translateY(50%);
+  }
+}
+
+.exitToTop {
+  -webkit-animation: exitToTop @animate-moderate ease-in, fadeOut @animate-moderate ease-in-out;
+  animation: exitToTop @animate-moderate ease-in, fadeOut @animate-moderate ease-in-out;
+}
+
+@-webkit-keyframes exitToTop {
+  to {
+    -webkit-transform: translateY(-50%);
+  }
+}
+
+@keyframes exitToTop {
+  from {
+  }
+  to {
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+
+
+.exitToBottom {
+  -webkit-animation: exitToBottom @animate-moderate ease-in, fadeOut @animate-moderate ease-in-out;
+  animation: exitToBottom @animate-moderate ease-in, fadeOut @animate-moderate ease-in-out;
+}
+
+@-webkit-keyframes exitToBottom {
+  to {
+    -webkit-transform: translateY(50%);
+  }
+}
+
+@keyframes exitToBottom {
+  to {
+    -webkit-transform: translateY(50%);
+    transform: translateY(50%);
+  }
+}
+
+
+//speed adjustments
+.animate-slow {
+  -webkit-transition-duration: @animate-slow !important;
+  transition-duration: @animate-slow !important;
+  -webkit-animation-duration: @animate-slow !important;
+  animation-duration: @animate-slow !important;
+}
+
+.animate-fast {
+  -webkit-transition-duration: @animate-fast !important;
+  transition-duration: @animate-fast !important;
+  -webkit-animation-duration: @animate-fast !important;
+  animation-duration: @animate-fast !important;
+}

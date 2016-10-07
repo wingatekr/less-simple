@@ -1,0 +1,16 @@
+@import "../base/_variables.less";
+@import "../base/_mixins.less";
+
+.page__footer {
+    .clearfix();
+    background: @gray-8;
+    padding: 20px 10px 10px 10px;
+    color: @gray-2;
+    margin-top: 20px;
+    height: @footer-height-mobile;
+
+    @media (min-width:@md) {
+        height: @footer-height-desktop;
+    }
+
+}

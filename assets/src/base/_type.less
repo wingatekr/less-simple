@@ -1,0 +1,92 @@
+@import "_variables.less";
+@import "_mixins.less";
+
+html {
+    font-family: @font-family-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: @font-primary;
+    line-height: @line-height-base;
+    margin-top: @line-height-base / 2em;
+    margin-bottom: @line-height-base / 2em;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: normal;
+}
+
+h1 {
+    .font-size-rems(28);
+}
+
+h2 {
+    .font-size-rems(22);
+}
+
+h3 {
+    .font-size-rems(18);
+}
+
+h4 {
+    .font-size-rems(16);
+}
+
+h5 {
+    .font-size-rems(14);
+}
+
+h6 {
+    .font-size-rems(12);
+}
+
+
+p {
+    margin: 0 0 .75em;
+}
+
+a {
+    text-decoration: none;
+    color: @hyperlink-blue;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+ol {
+    margin-top: .5em;
+}
+
+ul {
+    margin-top: .5em;
+}
+
+small,
+.small {
+    .font-size-rems(12);
+}
+
+// Alignment
+.text--left {
+    text-align: left;
+}
+
+.text--right {
+    text-align: right;
+}
+
+.text--center {
+    text-align: center;
+}
+
+.text--justify {
+    text-align: justify;
+}
